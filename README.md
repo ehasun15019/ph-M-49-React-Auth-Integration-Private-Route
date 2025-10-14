@@ -1,16 +1,29 @@
-# React + Vite
+## Step by step process of regester from 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. give evrery input field in "name" atribute. Here We "name" atribute use so that when from is submitted then within the "target" we get the value.  
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- firebase password auth -->
+---- in the Registration file with the function => handleRegistration() ------
 
-## React Compiler
+example: 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    const hanldeRegister = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+        // firebsae passwordAuth start
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((newUser) => {
+            return(
+                console.log(newUser),
+                e.target.reset()           
+            )
+        })
+        .catch((error) => {
+            return(
+                console.log(error)              
+            )
+        })
+    }
