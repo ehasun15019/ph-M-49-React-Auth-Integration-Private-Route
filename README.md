@@ -149,6 +149,7 @@ example:
 2. then give "onAuthStateChanged()" firebase function like this: 
 
     example:
+    
         const [user, SetUser] = useState(null);
 
         useEffect(() => {
