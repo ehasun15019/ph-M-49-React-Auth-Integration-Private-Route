@@ -74,11 +74,13 @@ example:
 
         example: 
 
-                const newHandleRegister = (e) => {
-                    e.preventDefault();
-                    const email = e.target.email.value;
-                    const password = e.target.password.value;
+            const {createUser} = use(AuthContext);
 
-                    createUser(email, password)
-                } 
+            const newHandleRegister = (e) => {
+                e.preventDefault();
+                const email = e.target.email.value;
+                const password = e.target.password.value;
+
+                createUser(email, password)
+            } 
 
