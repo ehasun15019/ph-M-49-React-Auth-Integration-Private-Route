@@ -106,7 +106,7 @@ example:
             } 
 
 
-====== How to use Context for firebase auth for (SignIn)  ====== 
+====== How to use Context for firebase auth for (Login)  ====== 
 
 1. go to the AuthProvider.jsx file
 
@@ -139,3 +139,22 @@ example:
             console.log(error);   
             })
         }
+
+
+
+====== Get Current User =====
+
+1. go to the AuthProvider.jsx file
+
+2. then give "onAuthStateChanged()" firebase function like this: 
+
+    example:
+
+        onAuthStateChanged(auth, (currentUser) => {
+            if(currentUser) {
+                console.log("Inside Ob: if", currentUser)
+            } 
+            else{
+                console.log("Inside Ob: else", currentUser)
+            }
+        })
