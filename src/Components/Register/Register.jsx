@@ -8,8 +8,7 @@ import { AuthContext } from "../../Context/AuthContext";
 const Register = () => {
 
     /* import AuthContext with authInfo */
-    const authInfo = use(AuthContext);
-    console.log(authInfo);
+    const {createUser} = use(AuthContext);
     
     
     /* registration functionality start */
@@ -17,6 +16,8 @@ const Register = () => {
       e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
+
+      createUser(email, password)
     }
 
 

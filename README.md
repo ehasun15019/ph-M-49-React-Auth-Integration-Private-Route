@@ -30,7 +30,7 @@ example:
 
 
 
-====== How to context use ======
+====== How to use Context for firebase auth  ======
 
 1. "createContext()" import form react in AuthContext.jsx
 2. Destructure default "children" props in AuthProvider.jsx and wrap with like this 
@@ -64,5 +64,21 @@ example:
 
     -> Follow the "newHandleRegister()" function .
 
-    -> import "AuthContext" using "use()" from react . then Destructure the "createUser" like this,  
-    const {createUser} = use(AuthContext);
+    -> import "AuthContext" using "use()" from react . then Destructure the "createUser" like this:
+
+        example: 
+
+            const {createUser} = use(AuthContext);
+    
+    -> then call the "createUser()" function in "newHandleRegister()" function. and call the email, password in the createUser()  like this:
+
+        example: 
+
+                const newHandleRegister = (e) => {
+                    e.preventDefault();
+                    const email = e.target.email.value;
+                    const password = e.target.password.value;
+
+                    createUser(email, password)
+                } 
+
