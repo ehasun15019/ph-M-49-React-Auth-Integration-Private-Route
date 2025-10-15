@@ -51,5 +51,6 @@ example:
 6. got to the Register.jsx Component.
 
     -> Follow the "newHandleRegister()" function .
+    
     -> import "AuthContext" using "use()" from react . then Destructure the "createUser" like this,  
     const {createUser} = use(AuthContext);

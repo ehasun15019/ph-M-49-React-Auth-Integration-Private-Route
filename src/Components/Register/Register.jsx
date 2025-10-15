@@ -8,7 +8,9 @@ import { AuthContext } from "../../Context/AuthContext";
 const Register = () => {
 
     /* import AuthContext with authInfo */
-    const {createUser} = use(AuthContext);
+    const authInfo = use(AuthContext);
+    console.log(authInfo);
+    
     
     /* registration functionality start */
     const newHandleRegister = (e) => {
