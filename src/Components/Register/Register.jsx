@@ -25,28 +25,6 @@ const Register = () => {
         console.log(error)
       })
     }
-
-
-
-    // const hanldeRegister = (e) => {
-    //     e.preventDefault();
-    //     const email = e.target.email.value;
-    //     const password = e.target.password.value;
-
-    //     // firebsae passwordAuth start
-    //     createUserWithEmailAndPassword(auth, email, password)
-    //     .then((newUser) => {
-    //         return(
-    //             console.log(newUser),
-    //             e.target.reset()           
-    //         )
-    //     })
-    //     .catch((error) => {
-    //         return(
-    //             console.log(error)              
-    //         )
-    //     })
-    // }
     /* registration functionality end */
 
   return (

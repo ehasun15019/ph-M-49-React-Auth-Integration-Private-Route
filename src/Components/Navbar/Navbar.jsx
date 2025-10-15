@@ -4,7 +4,17 @@ import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
 
-  const {user} = use(AuthContext);
+  const {user, signOutUser} = use(AuthContext);
+
+  const handleSignOut = () => {
+    signOutUser()
+    .then(() => {
+
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
 
   const navLinks = <>
     <li><NavLink to="/">Home</NavLink></li>
@@ -53,7 +63,9 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {
-          user ? <a className="btn">Signout</a> : <Link to="/login" className="btn">Login</Link>
+          user ? 
+          <a className="btn" onClick={handleSignOut}>Signout</a> : 
+          <Link to="/login" className="btn">Login</Link>
         }
       </div>
     </div>

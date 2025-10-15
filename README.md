@@ -110,12 +110,18 @@ example:
 
 1. go to the AuthProvider.jsx file
 
-2. create signIn functionality with this "signInWithEmailAndPassword()" firebase function like this:
+2. create signIn functionality with this "signInWithEmailAndPassword()" firebase function and add in to the authInfo like this:
 
     example: 
 
         const signInUser = (email, password) => {
             return signInWithEmailAndPassword(auth, email, password)
+        }
+
+        const authInfo = {
+            user,
+            createUser: createUser,
+            signInUser: signInUser,
         }
 
 
@@ -184,3 +190,39 @@ example:
             user ? <a className="btn">Signout</a> : <Link to="/login" className="btn">Login</Link>
             }
         </div>
+
+
+===== How to signOut in firebase with context =====
+
+1. go to the AuthProvider.jsx file
+
+2. create signOut functionality with "signOut()" firebase function and add authInfo  like this: 
+
+    example: 
+
+        const signOutUser = () => {
+            return signOut(auth)
+        }
+
+        const authInfo = {
+            user,
+            createUser: createUser,
+            signIn: signInUser,
+            signOutUser: signOutUser,
+        }
+
+3. Come to the navbar and and destructure the "signOutUser" and make a handleSignOut function like this: 
+
+    example: 
+
+        const {user, signOutUser} = use(AuthContext);
+
+        const handleSignOut = () => {
+            signOutUser()
+            .then(() => {
+
+            })
+            .catch((error) => {
+            console.log(error)
+            })
+        }
