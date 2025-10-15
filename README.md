@@ -149,7 +149,7 @@ example:
 2. then give "onAuthStateChanged()" firebase function like this: 
 
     example:
-    
+
         const [user, SetUser] = useState(null);
 
         useEffect(() => {
@@ -167,3 +167,20 @@ example:
             createUser: createUser,
             signIn: signInUser
         }
+
+
+======  How to get User in the navbar and show the signOut or Login button ======
+
+1. go to the Navbar.jsx file
+
+2. destructure "user" from AuthProvider.jsx file and import the navbar and then give a conditional things like this:
+
+    example: 
+
+        const {user} = use(AuthContext);
+
+        <div className="navbar-end">
+            {
+            user ? <a className="btn">Signout</a> : <Link to="/login" className="btn">Login</Link>
+            }
+        </div>
