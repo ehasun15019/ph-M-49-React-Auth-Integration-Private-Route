@@ -1,30 +1,43 @@
-import React from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import React, { use } from "react";
 import { Link } from "react-router";
-import { auth } from "../../firebase/firebase.config";
+import { AuthContext } from "../../Context/AuthContext";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../../firebase/firebase.config";
+
 
 const Register = () => {
 
+    /* import AuthContext with authInfo */
+    const {createUser} = use(AuthContext);
+    
     /* registration functionality start */
-    const hanldeRegister = (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-
-        // firebsae passwordAuth start
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((newUser) => {
-            return(
-                console.log(newUser),
-                e.target.reset()           
-            )
-        })
-        .catch((error) => {
-            return(
-                console.log(error)              
-            )
-        })
+    const newHandleRegister = (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const password = e.target.password.value;
     }
+
+
+
+    // const hanldeRegister = (e) => {
+    //     e.preventDefault();
+    //     const email = e.target.email.value;
+    //     const password = e.target.password.value;
+
+    //     // firebsae passwordAuth start
+    //     createUserWithEmailAndPassword(auth, email, password)
+    //     .then((newUser) => {
+    //         return(
+    //             console.log(newUser),
+    //             e.target.reset()           
+    //         )
+    //     })
+    //     .catch((error) => {
+    //         return(
+    //             console.log(error)              
+    //         )
+    //     })
+    // }
     /* registration functionality end */
 
   return (
@@ -34,7 +47,7 @@ const Register = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             {/* from */}
-            <form onSubmit={hanldeRegister}>
+            <form onSubmit={newHandleRegister}>
               <fieldset className="fieldset">
                 {/* name */}
                 <label className="label">Name</label>
