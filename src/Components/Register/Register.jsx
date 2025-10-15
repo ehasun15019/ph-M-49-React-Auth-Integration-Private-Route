@@ -18,6 +18,12 @@ const Register = () => {
       const password = e.target.password.value;
 
       createUser(email, password)
+      .then((newUser) => {
+        console.log(newUser)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     }
 
 

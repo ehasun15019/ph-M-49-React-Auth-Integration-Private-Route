@@ -84,3 +84,23 @@ example:
                 createUser(email, password)
             } 
 
+    -> then add the .then() and .catch() in the "newHandleRegister()" function like this: 
+
+        example: 
+
+            const {createUser} = use(AuthContext);
+
+            const newHandleRegister = (e) => {
+                e.preventDefault();
+                const email = e.target.email.value;
+                const password = e.target.password.value;
+
+                createUser(email, password)
+                .then((newUser) => {
+                    console.log(newUser)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            } 
+
