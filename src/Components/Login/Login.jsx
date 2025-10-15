@@ -1,7 +1,28 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
+
+  /* signInUser functionality start  */
+  const { signInUser } = use(AuthContext);
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUser(email, password)
+    .then((getUser) => {
+      console.log(getUser.user);
+      
+    })
+    .catch((error) => {
+      console.log(error);   
+    })
+  }
+  /* signInUser functionality end  */
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
@@ -9,7 +30,7 @@ const Login = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             {/* from */}
-            <form>
+            <form onSubmit={handleSignIn}>
               <fieldset className="fieldset">
                 {/* Email */}
                 <label className="label">Email</label>

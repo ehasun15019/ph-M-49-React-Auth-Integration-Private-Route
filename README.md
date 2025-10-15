@@ -30,9 +30,10 @@ example:
 
 
 
-====== How to use Context for firebase auth  ======
+====== How to use Context for firebase auth for (Register)  ======
 
 1. "createContext()" import form react in AuthContext.jsx
+
 2. Destructure default "children" props in AuthProvider.jsx and wrap with like this 
 
     example:
@@ -104,3 +105,37 @@ example:
                 })
             } 
 
+
+====== How to use Context for firebase auth for (SignIn)  ====== 
+
+1. go to the AuthProvider.jsx file
+
+2. create signIn functionality with this "signInWithEmailAndPassword()" firebase function like this:
+
+    example: 
+
+        const signInUser = (email, password) => {
+            return signInWithEmailAndPassword(auth, email, password)
+        }
+
+
+3. Come in the Login.jsx file and import AuthProvider using "use" form react and Destructure the          "signInUser". then create a function and call the "signInUser".  like this:
+
+    example: 
+
+        const { signInUser } = use(AuthContext);
+
+        const handleSignIn = (e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+
+            signInUser(email, password)
+            .then((getUser) => {
+            console.log(getUser.user);
+            
+            })
+            .catch((error) => {
+            console.log(error);   
+            })
+        }
