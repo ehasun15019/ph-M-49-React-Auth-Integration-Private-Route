@@ -149,12 +149,20 @@ example:
 2. then give "onAuthStateChanged()" firebase function like this: 
 
     example:
+        const [user, SetUser] = useState(null);
 
-        onAuthStateChanged(auth, (currentUser) => {
-            if(currentUser) {
-                console.log("Inside Ob: if", currentUser)
-            } 
-            else{
-                console.log("Inside Ob: else", currentUser)
-            }
-        })
+        useEffect(() => {
+            const unSubscribe =  onAuthStateChanged(auth, (currentUser) => {
+                console.log("in the auth", currentUser);
+                    SetUser(currentUser)
+                })
+                return() => {
+                    unSubscribe();
+                }
+        }, [])
+
+        const authInfo = {
+            user,
+            createUser: createUser,
+            signIn: signInUser
+        }
