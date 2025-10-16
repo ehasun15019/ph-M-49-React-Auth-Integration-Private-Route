@@ -226,3 +226,60 @@ example:
             console.log(error)
             })
         }
+
+
+====== How to make a private Routes ====== 
+
+1. create Routes folder
+
+2. in the the Routes folder make PrivateRoutes.jsx file 
+
+3. Destructure the "children" props in the PrivateRoutes.jsx file like this:
+
+    example: 
+
+        import React from 'react'
+
+        const PrivateRoutes = ({children}) => {
+            return (
+                <div>
+                
+                </div>
+            )
+        }
+
+        export default PrivateRoutes
+
+4. Then Destructure "user" from AuthProvider.jsx and import AuthContext using use.. like this: 
+
+    example: 
+
+        const {user} = use(AuthContext);
+
+
+5. simple example of if user login the webpage then show the private Route or go to the direct login page like this: 
+
+    example: 
+
+        import React, { use } from 'react'
+        import { AuthContext } from '../Context/AuthContext'
+        import { Navigate } from 'react-router';
+
+        const PrivateRoutes = ({children}) => {
+
+            const {user} = use(AuthContext);
+
+            if(user) {
+                return children
+            }
+
+            return <Navigate to="/login"></Navigate>
+        }
+
+        export default PrivateRoutes
+
+        
+
+
+
+
